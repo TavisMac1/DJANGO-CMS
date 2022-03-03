@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tavis Python</title>
+</head>
+
+<body>
+    <h3 style="color:gray">
+        <article style="text-align: center;">The Products Section &#128187;</article>
+        <a style="border: dotted;" href="{% url 'products:create' %}" style="color: grey;">Add </a>
+    </h3>
+    <br />
+    <div class="article">
+        {% if user.is_superuser %}
+            {%for product in products%}
+            <div style="border:solid; border-radius: 10px;padding:20px;display:inline-block; float: left;">
+                <h2>Product name: {{product.title}}</h2>
+                <h2>Product description: {{product.description}}</h2>
+                <h2>Product price: {{product.price}}</h2>
+                <h2>Product quantity: {{product.quantity}}</h2>
+                <h2>Product sku: {{product.sku}}</h2>
+                <h2>Product picture: <img style="width:150px;height: 50px;" src="{{product.picture.url}}" /></h2>
+                <h4><a href="{% url 'products:update' slug=product.slug %}" style="color: green;">Edit</h4>
+                <h4><a href="{% url 'products:delete' slug=product.slug %}" style="color: red;">Delete</h4>
+            </div>
+            {%endfor%}
+        {% else %}
+        <h1>You are not permitted to view this page</h1>
+        {% endif %}
+    </div>
+</body>
+
+</html>

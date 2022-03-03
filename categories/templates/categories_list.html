@@ -1,14 +1,29 @@
-{% extends 'C:\Users\Tavis\Documents\djangonautic\djangonautic\templates\base_layouts.html'%}
-{% block content %}
-<h3 style="color:deeppink">
-    <article>The Categories Section</article>
-</h3>
-<br />
-<div class="article">
-    {%for category in categories%}
-    <div>
-        <h2><a href="{% url 'articles:detail' slug=article.slug %}">{{article.title}}</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tavis Python</title>
+</head>
+<body>
+    <h3 style="color:gray">
+        <article style="text-align: center;">The Categories Section &#128187;</article>
+        <a style="border: dotted;" href="{% url 'categories:create' %}" style="color: grey;">Add </a>
+    </h3>
+    <br />
+    <div class="article">
+        {% if user.is_superuser %}
+            {%for category in cats%}
+            <div style="border:solid; border-radius: 10px;padding:20px;display:inline-block; float: left;">
+                <h2><a href="#">Category: {{category.title}}</h2>
+                <h4><a href="{% url 'categories:update' slug=category.slug %}"style="color: green;">Edit</h4>
+                <h4><a href="{% url 'categories:delete' slug=category.slug %}"style="color: red;">Delete</h4>
+            </div>
+            {%endfor%}
+        {% else %}
+            <h1>You are not permitted to view this page</h1>
+        {% endif %}
     </div>
-    {%endfor%}
-</div>
-{% endblock %}
+</body>
+</html>
