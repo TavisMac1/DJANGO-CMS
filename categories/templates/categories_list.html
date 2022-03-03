@@ -1,0 +1,14 @@
+{% extends 'C:\Users\Tavis\Documents\djangonautic\djangonautic\templates\base_layouts.html'%}
+{% block content %}
+<h3 style="color:deeppink">
+    <article>The Categories Section</article>
+</h3>
+<br />
+<div class="article">
+    {%for category in categories%}
+    <div>
+        <h2><a href="{% url 'articles:detail' slug=article.slug %}">{{article.title}}</h2>
+    </div>
+    {%endfor%}
+</div>
+{% endblock %}
