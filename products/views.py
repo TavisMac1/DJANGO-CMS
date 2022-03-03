@@ -4,7 +4,7 @@ from .models import Product
 from django.contrib.auth.decorators import login_required
 from . import crud
 
-def product_list(request):
+def product_list(request): #create collection from product model and serve it to the listing page for use
     products = Product.objects.all().order_by('date')
     return render(request, 'product_list.html', {'products': products})
 
@@ -24,14 +24,14 @@ def create_product(request):
 
 def update_product(request, slug):
     product = Product.objects.get(slug=slug)
-    form = form.UpdateProduct(request.POST, instance=prod)
-    if form.is_valid():
+    form = crud.UpdateProduct(request.POST, request.FILES, instance=product) #by using instance can assign same slug
+    if form.is_valid(): #check form validation
         form.save()
         return redirect('products:list')
     return render(request, 'update_product.html', {'product': product, 'form': form})
 
 
-def delete_product(request, slug):
+def delete_product(request, slug): #delete by finding the slug and remove all assosiated records
     product = Product.objects.get(slug=slug)
     product.delete()
     return redirect('products:list')
