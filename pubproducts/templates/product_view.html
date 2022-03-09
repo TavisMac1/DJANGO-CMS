@@ -1,0 +1,23 @@
+{% extends 'C:\\Users\\Tavis\\Documents\\djangoproject\\djangoproject\\templates\\pub_layout.html' %}
+{% block content %}
+    <h3 style="color:gray">
+        <article class="text-light" style="text-align: center;">Viewing Product <strong>{{products.title}}</strong></article>
+    </h3>
+    <br/>
+    <hr style="color: dodgerblue;"/>
+        <div class="d-flex justify-content-center">
+            <div class="card bg-primary" style="width: 18rem;">
+                <img class="card-img-top img-thumbnail" src="{{products.picture.url}}" alt="Main image">
+                <div class="card-body">
+                    <h5 class="card-title">{{products.category}}</h5>
+                    <hr/>
+                    <h5 class="card-title">{{products.title}}</h5>
+                    <hr />
+                    <p class="card-text">{{products.description}}</p>
+                    <li class="list-group-item">${{products.price}}</li>
+                    <li class="list-group-item">Quantity: {{products.quantity}}</li>
+                    <li class="list-group-item">#{{products.sku}}</li>
+                </div>
+            </div>
+        </div>
+{% endblock %}

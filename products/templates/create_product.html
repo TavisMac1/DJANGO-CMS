@@ -1,29 +1,21 @@
-<!--For creating an item-->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creation</title>
-</head>
-
-<body>
-
-</html>
+{% extends 'C:\\Users\\Tavis\\Documents\\djangoproject\\djangoproject\\templates\\private_layout.html' %}
+{% block content %}
 {% if user.is_superuser %}
-<div class="create-article">
-    <h2>
-        Create a product
-    </h2>
-    <form class="site-form" action="{% url 'products:create' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{product}}
-        <input type="submit" value="Create" />
-    </form>
+<p class="lead text-white" style="text-align: center;">Create a product</p>
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: 30rem;">
+        <div class="card-body">
+            <form action="{% url 'products:create' %}" method="post" enctype="multipart/form-data" class="justify-content-center">
+                <div class="form-group col-md-6">
+                    {% csrf_token %}
+                    {{product}}
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
 </div>
 {% else %}
 <h1>You are not permitted to view this page</h1>
 {% endif %}
-</body>
+{%endblock%}

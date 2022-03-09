@@ -1,0 +1,20 @@
+{% extends 'C:\\Users\\Tavis\\Documents\\djangoproject\\djangoproject\\templates\\private_layout.html' %}
+{% block content %}
+<h3 style="color:gray">
+    <div class="jumbotron text-light">
+        <h1 class="display-4" style="text-align: center;">Items in ...</h1>
+        <p class="lead" style="text-align: center;">Veiwing a list of items!</p>
+        <hr class="my-4" style="color: rgb(251, 251, 251); height: 5px;">
+    </div>
+</h3>
+<br/>
+<div class="article">
+    {%for product in products%}
+        <div class="card" style="width: 18rem; float: left; margin-right: 50px; margin-bottom: 20px; margin-left: 50px;">
+            <div class="card-body">
+                <h5 class="card-title">{{product.title}}</h5>
+            </div>
+        </div>
+    {%endfor%}
+</div>
+{%endblock%}

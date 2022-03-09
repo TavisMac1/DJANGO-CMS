@@ -1,0 +1,49 @@
+.site-form input, .site-form textarea {
+    display: block;
+
+}
+
+li {
+    display: block;
+}
+
+.errorlist {
+    text-align: left;
+    font-size: small;
+    color: crimson;
+    display: none;
+}
+
+label {
+    font-weight: lighter;
+    font-size: small;
+    display:block;
+}
+
+#id_picture {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+    background-color: dodgerblue;
+    border: solid;
+    border-radius: 20px;
+    border-color: rgb(87, 87, 87);
+}
+
+#id_slug, #id_title, #id_price, #id_quantity, #id_sku, #id_category {
+    border-radius: 15px;
+}
+
+#id_description {
+    border: solid;
+    border-radius: 10px;
+    height: 50px;
+    border-width: 1px;
+}
+
+#id_category option {
+    background-color: rgb(56, 56, 56);
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    caret-color: aqua;
+}

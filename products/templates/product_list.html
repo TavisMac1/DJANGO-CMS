@@ -1,39 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tavis Python</title>
-</head>
-
-<body>
-    <h3 style="color:gray">
-        <article style="text-align: center;">The Products Section &#128187;</article>
-        <a style="border: dotted;" href="{% url 'products:create' %}" style="color: grey;">Add </a>
-    </h3>
-    <br />
-    <div class="article">
-        {% if user.is_superuser %}
-            {%for product in products%}
-            <div style="border:solid; border-radius: 10px;padding:20px;display:inline-block; float: left;">
-                <h2>Product name: {{product.title}}</h2>
-                <h2>Product description: {{product.description}}</h2>
-                <h2>Product price: {{product.price}}</h2>
-                <h2>Product quantity: {{product.quantity}}</h2>
-                <h2>Product sku: {{product.sku}}</h2>
-                <h2>Product picture: <img style="width:100px;height: 50px;" src="{{product.picture.url}}" /></h2>
-                <div>
-                    <h4><a href="{% url 'products:update' slug=product.slug %}" style="color: green;">Edit</a></h4>
-                    <h4><a href="{% url 'products:delete' slug=product.slug %}" style="color: red;">Delete</a></h4>
+{% extends 'C:\\Users\\Tavis\\Documents\\djangoproject\\djangoproject\\templates\\private_layout.html' %}
+{% block content %}
+<h3 style="color:gray">
+    <div class="jumbotron text-light">
+        <h1 class="display-4" style="text-align: center;">Products</h1>
+        <p class="lead" style="text-align: center;">Add, edit and delete products</p>
+        <a href="{% url 'products:create' %}" class="btn btn-primary w-50" style="margin-left: 325px;">Create
+            &#128270;</a>
+        <hr class="my-4" style="color: rgb(251, 251, 251); height: 5px;">
+    </div>
+</h3>
+<br />
+<div class="article">
+    {% if user.is_superuser %}
+        {%for product in products%}
+            <div class="card" style="width: 18rem; float: left; margin-right: 50px; margin-bottom: 20px; margin-left: 50px;">
+                <div class="card-body">
+                    <img class="card-img-top img-thumbnail" src="{{product.picture.url}}" alt="Main image">
+                    <h5 class="card-title">{{product.category}}</h5>
+                    <h5 class="card-title">{{product.title}}</h5>
+                    <p class="card-text">{{product.description}}</p>
+                    <li class="list-group-item">${{product.price}}</li>
+                    <li class="list-group-item">Quantity: {{product.quantity}}</li>
+                    <li class="list-group-item">SKU: {{product.sku}}</li>
+                    <li class="list-group-item"><a href="{% url 'products:update' slug=product.slug %}" class="btn btn-primary" style="width:100%">
+                            Edit </a></li>
+                    <li class="list-group-item"><a href="{% url 'products:delete' slug=product.slug %}" class="btn btn-primary" style="width:100%">
+                            Delete</a></li>
                 </div>
             </div>
-            {%endfor%}
-        {% else %}
+        {%endfor%}
+    {% else %}
         <h1>You are not permitted to view this page</h1>
-        {% endif %}
-    </div>
-</body>
-
-</html>
+    {% endif %}
+</div>
+{%endblock%}
